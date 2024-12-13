@@ -1,0 +1,33 @@
+[package]
+name = "metaheurustics"
+version = "0.1.0"
+edition = "2021"
+authors = ["Arya Shah <aryaforhire@gmail.com>"]
+description = "A comprehensive collection of metaheuristic optimization algorithms implemented in Rust"
+license = "GPL-3.0"
+repository = "https://github.com/aryashah2k/metaheuRUSTics"
+documentation = "https://docs.rs/metaheurustics"
+readme = "README.md"
+keywords = ["optimization", "metaheuristics", "algorithms", "pso", "genetic-algorithm"]
+categories = ["algorithms", "science", "mathematics"]
+
+[dependencies]
+ndarray = { version = "0.15", features = ["approx"] }
+rand = { version = "0.8", features = ["std", "std_rng"] }
+thiserror = "1.0"
+plotters = "0.3"
+
+[dev-dependencies]
+criterion = "0.5"
+approx = "0.5"
+
+[[bench]]
+name = "optimization_benchmarks"
+harness = false
+
+[[bench]]
+name = "comprehensive_benchmark"
+harness = false
+
+[[example]]
+name = "simple_optimization"
