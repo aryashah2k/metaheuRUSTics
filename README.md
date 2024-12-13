@@ -2,8 +2,8 @@
 
 A comprehensive Rust library for metaheuristic optimization algorithms, providing efficient implementations of various optimization techniques.
 
-[![Crates.io](https://img.shields.io/crates/v/metaheurustics.svg)](https://crates.io/crates/metaheurustics](https://crates.io/crates/metaheurustics-rs))
-[![Documentation](https://docs.rs/metaheurustics/badge.svg)](https://docs.rs/metaheurustics](https://docs.rs/metaheurustics-rs/0.1.0/metaheurustics_rs/))
+[![Crates.io](https://img.shields.io/crates/v/metaheurustics.svg)](https://crates.io/crates/metaheurustics-rs)
+[![Documentation](https://docs.rs/metaheurustics/badge.svg)](https://docs.rs/metaheurustics-rs/0.1.0/metaheurustics_rs/)
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Features
