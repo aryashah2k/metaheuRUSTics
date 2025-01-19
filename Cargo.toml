@@ -1,5 +1,5 @@
 [package]
-name = "metaheurustics"
+name = "metaheurustics-rs"
 version = "0.2.0"
 edition = "2021"
 authors = ["Arya Shah <aryaforhire@gmail.com>"]
