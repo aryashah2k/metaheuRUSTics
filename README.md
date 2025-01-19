@@ -65,7 +65,7 @@ Check out the examples directory for more detailed usage:
 
 ## Documentation
 
-For detailed documentation, visit [docs.rs/metaheurustics](https://docs.rs/metaheurustics)
+For detailed documentation, visit [docs.rs/metaheurustics](https://docs.rs/metaheurustics-rs/0.2.0/metaheurustics/)
 
 ## Benchmarks
 
