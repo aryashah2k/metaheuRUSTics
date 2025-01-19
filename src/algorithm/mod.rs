@@ -1,7 +1,9 @@
 use ndarray::Array1;
 
 pub mod abco;
+pub mod acgwo;
 pub mod de;
+pub mod fa;
 pub mod ga;
 pub mod gwo;
 pub mod pso;
@@ -9,7 +11,9 @@ pub mod sa;
 
 // Re-export common types and algorithms
 pub use self::abco::{ABCO, ABCOParams};
+pub use self::acgwo::{ACGWO, ACGWOParams};
 pub use self::de::{DE, DEParams, DEStrategy};
+pub use self::fa::FireflyAlgorithm;
 pub use self::ga::{GA, GAParams};
 pub use self::gwo::{GWO, GWOParams};
 pub use self::pso::{PSO, PSOParams};

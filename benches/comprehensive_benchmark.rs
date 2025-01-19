@@ -6,6 +6,8 @@ use metaheurustics::algorithm::{
     de::{DE, DEParams, DEStrategy},
     ga::{GA, GAParams},
     sa::{SA, SAParams},
+    abco::{ABCO, ABCOParams},
+    gwo::{GWO, GWOParams},
 };
 use metaheurustics::test_function::{
     Sphere,
@@ -133,11 +135,59 @@ fn benchmark_sa(c: &mut Criterion) {
     }
 }
 
+fn benchmark_abco(c: &mut Criterion) {
+    let dim = 30;
+    let test_functions = create_test_functions(dim);
+    
+    let params = ABCOParams {
+        opt_params: OptimizationParams {
+            population_size: 30,
+            max_iterations: 100,
+            target_value: None,
+        },
+        limit: 20,
+    };
+
+    for (i, func) in test_functions.iter().enumerate() {
+        c.bench_function(&format!("ABCO_func_{}", i), |b| {
+            b.iter(|| {
+                let optimizer = ABCO::new(func.as_ref(), params.clone());
+                optimizer.optimize()
+            })
+        });
+    }
+}
+
+fn benchmark_gwo(c: &mut Criterion) {
+    let dim = 30;
+    let test_functions = create_test_functions(dim);
+    
+    let params = GWOParams {
+        opt_params: OptimizationParams {
+            population_size: 30,
+            max_iterations: 100,
+            target_value: None,
+        },
+        a_decay: 0.01,
+    };
+
+    for (i, func) in test_functions.iter().enumerate() {
+        c.bench_function(&format!("GWO_func_{}", i), |b| {
+            b.iter(|| {
+                let optimizer = GWO::new(func.as_ref(), params.clone());
+                optimizer.optimize()
+            })
+        });
+    }
+}
+
 criterion_group!(
     benches,
     benchmark_pso,
     benchmark_de,
     benchmark_ga,
-    benchmark_sa
+    benchmark_sa,
+    benchmark_abco,
+    benchmark_gwo,
 );
 criterion_main!(benches);

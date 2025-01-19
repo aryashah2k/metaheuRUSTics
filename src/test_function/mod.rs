@@ -1,9 +1,12 @@
-use ndarray::Array1;
+use ndarray::{Array1, Array2};
 use std::f64::consts::PI;
 use crate::algorithm::ObjectiveFunction;
 
 mod additional;
 pub use additional::*;
+
+mod beale;
+pub use beale::*;
 
 /// Common trait for test functions
 pub trait TestFunction: ObjectiveFunction {
@@ -15,6 +18,33 @@ pub trait TestFunction: ObjectiveFunction {
     
     /// Get the name of the test function
     fn name(&self) -> &'static str;
+
+    fn test_3d_surface(&self, n_points: usize) -> (Array2<f64>, Array2<f64>, Array2<f64>) {
+        let (min_bounds, max_bounds) = self.bounds();
+        let x_min = min_bounds[0];
+        let x_max = max_bounds[0];
+        let y_min = min_bounds[1];
+        let y_max = max_bounds[1];
+
+        let x_step = (x_max - x_min) / (n_points - 1) as f64;
+        let y_step = (y_max - y_min) / (n_points - 1) as f64;
+
+        let mut x = Array2::zeros((n_points, n_points));
+        let mut y = Array2::zeros((n_points, n_points));
+        let mut z = Array2::zeros((n_points, n_points));
+
+        for i in 0..n_points {
+            for j in 0..n_points {
+                let x_val = x_min + i as f64 * x_step;
+                let y_val = y_min + j as f64 * y_step;
+                x[[i, j]] = x_val;
+                y[[i, j]] = y_val;
+                z[[i, j]] = self.evaluate(&Array1::from_vec(vec![x_val, y_val]));
+            }
+        }
+
+        (x, y, z)
+    }
 }
 
 /// Ackley Function
